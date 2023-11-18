@@ -29,4 +29,16 @@ Make sure you are in the main directory and not within the OIDv4_ToolKit directo
 ```bash
 python3 oid2hc.py --output_dir haar_cascade_dataset --data_dir OIDv4_ToolKit/OID/Dataset/train/Banjo
 ```
+## 6. Thats it
+![Progress](imgs/progress.jpg)
+You will find the images in the haar_cascade_dataset directory.
+
+## FYI
+If you want to display every original and every resized image, you can use this command
+```bash
+python3 oid2hc.py --output_dir haar_cascade_dataset --data_dir OIDv4_ToolKit/OID/Dataset/train/Banjo --show_images True
+```
+
 Make sure to follow these steps to convert the Open Images Dataset to a Haar Cascades Dataset for OpenCV.
+
+

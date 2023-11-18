@@ -11,9 +11,13 @@ parser = argparse.ArgumentParser(description='python3 convertProject2OpenCVHaar.
 # Add arguments (e.g., input_folder and output_folder)
 parser.add_argument('--data_dir', help='Path to the dataset folder', required=True)
 parser.add_argument('--output_dir', help='Path to the output folder', required=True)
+parser.add_argument('--show_images', help='Path to the output folder', required=False)
 
 # Parse the command line arguments
 args = parser.parse_args()
+show_images = False
+if args.show_images != None:
+    show_images = True
 
 # Input
 dataPath = args.data_dir
@@ -69,7 +73,7 @@ for label in labels:
             filename = label.replace(".txt","")
             # copy image to output
             # shutil.copy(datasetPath+"/"+imgSelect+"/"+filename+".jpg", outPath+"/img_p/"+str(cc_id)+".jpg")
-            resize_box_pos = scaler.translateBoxes(line.strip(), dataPath+"/"+filename+".jpg", (2000, 2000),False)
+            resize_box_pos = scaler.translateBoxes(line.strip(), dataPath+"/"+filename+".jpg", (2000, 2000),show_images)
             scaler.padAndSaveImage(dataPath+"/"+filename+".jpg", dataOutPath+"/img_p/"+str(cc_id)+".jpg",(2000, 2000))
             classe = resize_box_pos[0]
             left = float(resize_box_pos[1])
