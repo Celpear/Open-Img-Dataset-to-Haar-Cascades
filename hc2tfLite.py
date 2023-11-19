@@ -63,7 +63,7 @@ def create_xml(image_path, object_info, output_folder):
     output_path = os.path.join(output_folder, os.path.splitext(os.path.basename(image_path))[0] + ".xml")
     tree.write(output_path)
 
-def main(pos_file_path,object_name):
+def main(pos_file_path,object_name,img_width):
     # Pfad ohne Dateinamen erstellen
     dir_path = os.path.dirname(pos_file_path)
     output_folder = "annotations"
@@ -73,7 +73,7 @@ def main(pos_file_path,object_name):
             parts = line.strip().split()
             image_path = parts[0]
             object_info = {
-                "size": {"width": 2000, "height": 2000, "depth": 3},
+                "size": {"width": img_width, "height": img_width, "depth": 3},
                 "object": {
                     "name": str(object_name),
                     "pose": "Unspecified",
@@ -94,6 +94,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
     parser.add_argument('--pos_file_path', help='Path to the pos.txt file.', required=True)
     parser.add_argument('--object_name', help='Name of the detected Object', required=True)
+    parser.add_argument('--w', help='Width and height of the image', required=False)
     
     args = parser.parse_args()
-    main(args.pos_file_path,args.object_name)
+    if args.w == None:
+        img_width = 2000
+    else:
+        img_width = args.w
+    main(args.pos_file_path,args.object_name,img_width)
