@@ -29,16 +29,19 @@ Make sure you are in the main directory and not within the OIDv4_ToolKit directo
 ```bash
 python3 oid2hc.py --output_dir haar_cascade_dataset --data_dir OIDv4_ToolKit/OID/Dataset/train/Banjo
 ```
+Or if you want to see all images and boxes for debugging:
+```bash
+python3 oid2hc.py --output_dir haar_cascade_dataset --data_dir OIDv4_ToolKit/OID/Dataset/train/Banjo --show_images True
+```
 ## 6. That's it
 ![Progress](imgs/progress.jpg)
 You will find the images in the haar_cascade_dataset directory.
 
-## FYI
-If you want to display every original and every resized image, you can use this command
+## Would you like to generate annotations for TensorFlow Light model training as well? If so, you can utilize the following command:
 ```bash
-python3 oid2hc.py --output_dir haar_cascade_dataset --data_dir OIDv4_ToolKit/OID/Dataset/train/Banjo --show_images True
+python3 hc2tfLite.py --pos_file_path haar_cascade_dataset/pos.txt --object_name Banjo
 ```
+This command generates annotations, with haar_cascade_dataset/pos.txt being the path to the positive file and Banjo as the object name for which you want to create annotations.
 
-Make sure to follow these steps to convert the Open Images Dataset to a Haar Cascades Dataset for OpenCV.
 
 

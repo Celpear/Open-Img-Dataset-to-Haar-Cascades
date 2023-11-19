@@ -84,7 +84,7 @@ for label in labels:
             pos_file_path = dataOutPath+"/"+"pos.txt"
             with open(pos_file_path, 'a') as file:
                 # Write the new line to the file
-                file.write(f'{dataOutPath+"/img_p/"+str(cc_id)+".jpg"} {left} {top} {right} {bottom}' + '\n')
+                file.write(f'{"img_p/"+str(cc_id)+".jpg"} {left} {top} {right} {bottom}' + '\n')
             progressBar.clear_screen()
             progressBar.progress_bar(cc_id, cc_max, prefix='Convert Progress:', suffix='', length=40)
             cc_id += 1
